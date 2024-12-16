@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="article-entry">
+    <h2>{{ object.title }}</h2>
+    <p><img src="{{ MEDIA_URL }}{{ product.image.url }}" style="width: 40%;"><p>
+    <p>Description: {{ object.description }}</p> 
+    <p>Price: {{ object.price }} $</p>
+</div>
+    <p><a class="btn btn-primary" href="{% url 'home' %}">All products</a></p>
+   
+{% endblock content %}
+    

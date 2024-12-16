@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<div class="pt-3 pb-3 ps-3 pe-3 mb-1 rounded bg-secondary text-white">
+    <div class="row">
+        <div class="col col-md-8">
+            <h1 class="text-center">Cart</h1>
+        </div>
+        <div class="col position-relative">
+            <h5 class="position-absolute bottom-0 start-50">Total: {{ total_sum }} $</h1>
+            <a class="btn btn-primary position-absolute bottom-0 start-20" href="{% url 'confirm_order'%}">Order</a>
+        </div>
+    </div>
+</div>
+    {% for cartentry in object_list %}
+    <div class="card mb-3" >
+        <div class="row g-0">
+            <div class="col-md-4">
+                    <img src="{{ MEDIA_URL }}{{ cartentry.product.image.url }}" class="img-fluid rounded-start" style="width: 100%;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ cartentry.product.title }}</h5>
+                    <p class="card-text">{{ cartentry.product.description }}</p>
+                    <p class="card-text">Quantity: {{ cartentry.quantity }}</p>
+                    <p class="card-text">Price: {{ cartentry.product.price }} $</p>
+                    <a class="btn btn-primary" href="{% url 'product_detail' cartentry.product.pk %}">Details</a>
+                    <a class="btn btn-primary" href="{% url 'cartentry_edit_quantity' cartentry.product.pk %}">Edit quantity</a>
+                    <a class="btn btn-primary" href="{% url 'cartentry_delete' cartentry.pk %}">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

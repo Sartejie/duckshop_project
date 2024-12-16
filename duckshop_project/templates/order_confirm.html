@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Order confirm{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Confirm order</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input class="btn btn-success" type="submit" value="Confirm">
+    </form>
+{% endblock %}
+    

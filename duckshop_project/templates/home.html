@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row g-5">
+{% for product in object_list %}
+<div class="col col-xs">
+    <div class="card">
+        <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="card-img-top" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <a class="btn btn-primary" href="{% url 'product_detail' product.pk %}">Details</a>
+            <a class="btn btn-primary" href="{% url 'add_to_cart' product.pk %}">To cart</a>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Price: {{ product.price }} $</li>
+        </ul>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Detail{% endblock %}
+
+{% block content %}
+
+{% for order in object_list %}
+    <div class="card mb-3" >
+        <div class="row g-0">
+            <div class="col-md-4">
+                    <img src="{{ MEDIA_URL }}{{ order.product.image.url }}" class="img-fluid rounded-start" style="width: 100%;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ order.product.title }}</h5>
+                    <p class="card-text">{{ order.product.description }}</p>
+                    <p class="card-text">Quantity: {{ order.quantity }}</p>
+                    <p class="card-text">Price: {{ order.product.price }} $</p>
+                    <a class="btn btn-primary" href="{% url 'order_list' %}">Back to orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

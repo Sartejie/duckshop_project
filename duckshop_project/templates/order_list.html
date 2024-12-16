@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+<div class="pt-3 pb-3 ps-3 pe-3 mb-1 rounded bg-secondary text-white">
+    <h1 class="text-center">Orders</h1>
+</div>
+    {% for order in object_list %}
+    <div class="card mb-3" >
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ order.customer.username}}</h5>
+                    <p class="card-text">Email: {{ order.customer.email}}</p>
+                    <p class="card-text">Phone number: {{ order.customer.phone}}</p>
+                    <p class="card-text">Total price: {{ order.total_price}} $</p>
+                    <a class="btn btn-primary" href="{% url 'order_detail' order.pk %}">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

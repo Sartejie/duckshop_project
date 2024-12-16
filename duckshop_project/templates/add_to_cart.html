@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm add to cart{% endblock %}
+
+{% block content %}
+    <h1>Confirm add to cart</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success" type="submit" value="Confirm">
+    </form>
+{% endblock %}
